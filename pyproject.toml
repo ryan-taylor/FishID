@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "python-template"
+name = "fishery-id-tool"
 version = "0.1.0"
 description = "A web tool for creating and decoding Fishery IDs"
 authors = ["Your Name <you@example.com>"]

@@ -45,6 +45,7 @@ def index():
     decoded_id = None
     uuid_id = None
     semantic_id_from_uuid = None
+    decoded_fields = None
     if request.method == 'POST':
         if 'create' in request.form:
             fishery_id = FisheryID(
@@ -68,6 +69,14 @@ def index():
                     'flag': decoded.flag,
                     'gear': decoded.gear
                 }
+                decoded_fields = {
+                    'species': decoded.species,
+                    'area': decoded.area,
+                    'authority': decoded.authority,
+                    'management_area': decoded.management_area,
+                    'flag': decoded.flag,
+                    'gear': decoded.gear
+                }
         elif 'generate_uuid' in request.form:
             semantic_id = request.form['semantic_id']
             fishery_id = FisheryID.parse_semantic_identifier(semantic_id)
@@ -76,6 +85,6 @@ def index():
         elif 'get_semantic_id' in request.form:
             uuid_str = request.form['uuid']
             semantic_id_from_uuid = FisheryID.get_semantic_id_from_uuid(uuid_str)
-    return render_template('index.html', created_id=created_id, decoded_id=decoded_id, uuid_id=uuid_id, semantic_id_from_uuid=semantic_id_from_uuid)
+    return render_template('index.html', created_id=created_id, decoded_id=decoded_id, uuid_id=uuid_id, semantic_id_from_uuid=semantic_id_from_uuid, decoded_fields=decoded_fields)
 
 # No need for the if __name__ == '__main__': block when using Gunicorn

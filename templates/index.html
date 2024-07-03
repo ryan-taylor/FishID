@@ -30,33 +30,26 @@
             border-radius: 5px;
         }
         .shark-gif {
-            display: none;
             margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Fishery ID Tool</h1>
+    <img id="shark-gif" src="shark-dance-left-shark.gif" class="shark-gif" alt="Shark Dance Left Shark">
 
     <h2>Create Fishery ID</h2>
     <form method="POST">
-        <input type="text" name="species" placeholder="Species code (e.g., SCD)" required><br>
-        <input type="text" name="area" placeholder="Assessment area (e.g., PHL_REG:6 of PHL_FMA:11)" required><br>
-        <input type="text" name="authority" placeholder="Management authority (e.g., NAT)" required><br>
-        <input type="text" name="management_area" placeholder="Management area (e.g., PHL_FMA:11)" required><br>
-        <input type="text" name="flag" placeholder="Vessel flag (e.g., PHL)" required><br>
-        <input type="text" name="gear" placeholder="Gear type (e.g., FPO)" required><br>
+        <input type="text" name="species" placeholder="Species code (e.g., SCD)" required value="{{ decoded_fields.species if decoded_fields else '' }}"><br>
+        <input type="text" name="area" placeholder="Assessment area (e.g., PHL_REG:6 of PHL_FMA:11)" required value="{{ decoded_fields.area if decoded_fields else '' }}"><br>
+        <input type="text" name="authority" placeholder="Management authority (e.g., NAT)" required value="{{ decoded_fields.authority if decoded_fields else '' }}"><br>
+        <input type="text" name="management_area" placeholder="Management area (e.g., PHL_FMA:11)" required value="{{ decoded_fields.management_area if decoded_fields else '' }}"><br>
+        <input type="text" name="flag" placeholder="Vessel flag (e.g., PHL)" required value="{{ decoded_fields.flag if decoded_fields else '' }}"><br>
+        <input type="text" name="gear" placeholder="Gear type (e.g., FPO)" required value="{{ decoded_fields.gear if decoded_fields else '' }}"><br>
         <input type="submit" name="create" value="Create Fishery ID">
     </form>
 
     {% if created_id %}
-    <div class="shark-gif">
-        <div class="tenor-gif-embed" data-postid="17059135" data-share-method="host" data-aspect-ratio="1" data-width="100%">
-            <a href="https://tenor.com/view/shark-dance-left-shark-shark-mascot-dance-moves-grooves-gif-17059135">Shark Dance Left Shark Sticker</a> from
-            <a href="https://tenor.com/search/shark+dance-stickers">Shark Dance Stickers</a>
-        </div> 
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </div>
     <h3>Created Fishery ID:</h3>
     <pre>{{ created_id }}</pre>
     {% endif %}
@@ -68,13 +61,6 @@
     </form>
 
     {% if decoded_id %}
-    <div class="shark-gif">
-        <div class="tenor-gif-embed" data-postid="17059135" data-share-method="host" data-aspect-ratio="1" data-width="100%">
-            <a href="https://tenor.com/view/shark-dance-left-shark-shark-mascot-dance-moves-grooves-gif-17059135">Shark Dance Left Shark Sticker</a> from
-            <a href="https://tenor.com/search/shark+dance-stickers">Shark Dance Stickers</a>
-        </div> 
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </div>
     <h3>Decoded Fishery ID:</h3>
     <pre>{{ decoded_id | tojson(indent=2) }}</pre>
     {% endif %}
@@ -86,13 +72,6 @@
     </form>
 
     {% if uuid_id %}
-    <div class="shark-gif">
-        <div class="tenor-gif-embed" data-postid="17059135" data-share-method="host" data-aspect-ratio="1" data-width="100%">
-            <a href="https://tenor.com/view/shark-dance-left-shark-shark-mascot-dance-moves-grooves-gif-17059135">Shark Dance Left Shark Sticker</a> from
-            <a href="https://tenor.com/search/shark+dance-stickers">Shark Dance Stickers</a>
-        </div> 
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </div>
     <h3>Generated UUID:</h3>
     <pre>{{ uuid_id }}</pre>
     {% endif %}
@@ -104,13 +83,6 @@
     </form>
 
     {% if semantic_id_from_uuid %}
-    <div class="shark-gif">
-        <div class="tenor-gif-embed" data-postid="17059135" data-share-method="host" data-aspect-ratio="1" data-width="100%">
-            <a href="https://tenor.com/view/shark-dance-left-shark-shark-mascot-dance-moves-grooves-gif-17059135">Shark Dance Left Shark Sticker</a> from
-            <a href="https://tenor.com/search/shark+dance-stickers">Shark Dance Stickers</a>
-        </div> 
-        <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
-    </div>
     <h3>Semantic ID from UUID:</h3>
     <pre>{{ semantic_id_from_uuid }}</pre>
     {% endif %}

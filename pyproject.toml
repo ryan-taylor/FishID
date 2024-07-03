@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "python-template"
+version = "0.1.0"
+description = "A web tool for creating and decoding Fishery IDs"
+authors = ["Your Name <you@example.com>"]
+
+[tool.poetry.dependencies]
+python = ">=3.10.0,<3.12"
+flask = "^3.0.3"
+gunicorn = "^21.2.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

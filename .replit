@@ -1,0 +1,24 @@
+run = "bash run.sh"
+entrypoint = "main.py"
+
+[nix]
+channel = "stable-23_05"
+pkgs = [
+  "python310",
+  "pip",
+  "gunicorn"
+]
+
+[deployment]
+run = ["sh", "-c", "bash run.sh"]
+deploymentTarget = "cloudrun"
+
+[languages.python]
+pattern = "**/*.py"
+syntax = "python"
+
+[languages.python.languageServer]
+start = ["pylsp"]
+
+[env]
+PYTHONUNBUFFERED = "1"
